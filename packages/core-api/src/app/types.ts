@@ -15,8 +15,9 @@
  */
 
 import { ComponentType } from 'react';
-import { IconComponent, SystemIconKey, SystemIcons } from '../icons';
-import { BackstagePlugin } from '../plugin';
+import { IconComponent, IconComponentMap, IconKey } from '../icons';
+import { BackstagePlugin, AnyExternalRoutes } from '../plugin/types';
+import { RouteRef } from '../routing';
 import { AnyApiFactory } from '../apis';
 import { AppTheme, ProfileInfo } from '../apis/definitions';
 import { AppConfig } from '@backstage/config';
@@ -78,6 +79,11 @@ export type AppComponents = {
  */
 export type AppConfigLoader = () => Promise<AppConfig[]>;
 
+export type AppRouteBinder = <T extends AnyExternalRoutes>(
+  externalRoutes: T,
+  targetRoutes: { [key in keyof T]: RouteRef<any> },
+) => void;
+
 export type AppOptions = {
   /**
    * A collection of ApiFactories to register in the application to either
@@ -88,12 +94,12 @@ export type AppOptions = {
   /**
    * Supply icons to override the default ones.
    */
-  icons?: Partial<SystemIcons>;
+  icons?: IconComponentMap;
 
   /**
    * A list of all plugins to include in the app.
    */
-  plugins?: BackstagePlugin[];
+  plugins?: BackstagePlugin<any, any>[];
 
   /**
    * Supply components to the app to override the default ones.
@@ -134,18 +140,38 @@ export type AppOptions = {
    *  that was packaged by the backstage-cli and default docker container boot script.
    */
   configLoader?: AppConfigLoader;
+
+  /**
+   * A function that is used to register associations between cross-plugin route
+   * references, enabling plugins to navigate between each other.
+   *
+   * The `bind` function that is passed in should be used to bind all external
+   * routes of all used plugins.
+   *
+   * ```ts
+   * bindRoutes({ bind }) {
+   *   bind(docsPlugin.externalRoutes, {
+   *     homePage: managePlugin.routes.managePage,
+   *   })
+   *   bind(homePagePlugin.externalRoutes, {
+   *     settingsPage: settingsPlugin.routes.settingsPage,
+   *   })
+   * }
+   * ```
+   */
+  bindRoutes?(context: { bind: AppRouteBinder }): void;
 };
 
 export type BackstageApp = {
   /**
    * Returns all plugins registered for the app.
    */
-  getPlugins(): BackstagePlugin[];
+  getPlugins(): BackstagePlugin<any, any>[];
 
   /**
-   * Get a common icon for this app.
+   * Get a common or custom icon for this app.
    */
-  getSystemIcon(key: SystemIconKey): IconComponent;
+  getSystemIcon(key: IconKey): IconComponent;
 
   /**
    * Provider component that should wrap the Router created with getRouter()

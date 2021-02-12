@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import { ApiProvider, ApiRegistry, errorApiRef } from '@backstage/core';
-import { CatalogApi, catalogApiRef } from '@backstage/plugin-catalog';
+import { CatalogApi, catalogApiRef } from '@backstage/plugin-catalog-react';
 import { renderInTestApp, renderWithEffects } from '@backstage/test-utils';
 import { lightTheme } from '@backstage/theme';
 import { ThemeProvider } from '@material-ui/core';
@@ -99,7 +99,7 @@ describe('TemplatePage', () => {
       </ApiProvider>,
     );
 
-    expect(rendered.queryByText('Create a new component')).toBeInTheDocument();
+    expect(rendered.queryByText('Create a New Component')).toBeInTheDocument();
     expect(rendered.queryByText('React SSR Template')).toBeInTheDocument();
     // await act(async () => await mutate('templates/test'));
   });
@@ -116,7 +116,7 @@ describe('TemplatePage', () => {
       </ApiProvider>,
     );
 
-    expect(rendered.queryByText('Create a new component')).toBeInTheDocument();
+    expect(rendered.queryByText('Create a New Component')).toBeInTheDocument();
     expect(rendered.queryByTestId('loading-progress')).toBeInTheDocument();
     // Need to cleanup the promise or will timeout
     act(() => {
@@ -141,7 +141,7 @@ describe('TemplatePage', () => {
     );
 
     expect(
-      rendered.queryByText('Create a new component'),
+      rendered.queryByText('Create a New Component'),
     ).not.toBeInTheDocument();
     expect(rendered.queryByText('This is root')).toBeInTheDocument();
   });

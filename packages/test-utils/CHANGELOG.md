@@ -1,5 +1,20 @@
 # @backstage/test-utils
 
+## 0.1.7
+
+### Patch Changes
+
+- b51ee6ece: Added `mountedRoutes` option to `wrapInTestApp`, allowing routes to be associated to concrete paths to make `useRouteRef` usable in tested components.
+
+## 0.1.6
+
+### Patch Changes
+
+- 1dc445e89: Update to use new plugin extension API
+- Updated dependencies [d681db2b5]
+- Updated dependencies [1dc445e89]
+  - @backstage/core-api@0.2.7
+
 ## 0.1.5
 
 ### Patch Changes

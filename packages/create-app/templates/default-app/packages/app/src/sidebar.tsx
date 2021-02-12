@@ -3,8 +3,6 @@ import HomeIcon from '@material-ui/icons/Home';
 import LibraryBooks from '@material-ui/icons/LibraryBooks';
 import ExtensionIcon from '@material-ui/icons/Extension';
 import CreateComponentIcon from '@material-ui/icons/AddCircleOutline';
-import BuildIcon from '@material-ui/icons/BuildRounded';
-import RuleIcon from '@material-ui/icons/AssignmentTurnedIn';
 import MapIcon from '@material-ui/icons/MyLocation';
 import { Link, makeStyles } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
@@ -20,27 +18,8 @@ import {
   SidebarContext,
   SidebarSpace,
 } from '@backstage/core';
+import { SidebarSearch } from '@backstage/plugin-search';
 
-export const AppSidebar = () => (
-  <Sidebar>
-    <SidebarLogo />
-    <SidebarDivider />
-    {/* Global nav, not org-specific */}
-    <SidebarItem icon={HomeIcon} to="./" text="Home" />
-    <SidebarItem icon={ExtensionIcon} to="api-docs" text="APIs" />
-    <SidebarItem icon={LibraryBooks} to="/docs" text="Docs" />
-    <SidebarItem icon={CreateComponentIcon} to="create" text="Create..." />
-    <SidebarDivider />
-    <SidebarItem icon={MapIcon} to="tech-radar" text="Tech Radar" />
-    <SidebarItem icon={RuleIcon} to="lighthouse" text="Lighthouse" />
-    <SidebarItem icon={BuildIcon} to="circleci" text="CircleCI" />
-    {/* End global nav */}
-    <SidebarDivider />
-    <SidebarSpace />
-    <SidebarDivider />
-    <SidebarSettings />
-  </Sidebar>
-);
 
 const useSidebarLogoStyles = makeStyles({
   root: {
@@ -74,3 +53,23 @@ const SidebarLogo = () => {
     </div>
   );
 };
+
+export const AppSidebar = () => (
+  <Sidebar>
+    <SidebarLogo />
+    <SidebarSearch />
+    <SidebarDivider />
+    {/* Global nav, not org-specific */}
+    <SidebarItem icon={HomeIcon} to="./" text="Home" />
+    <SidebarItem icon={ExtensionIcon} to="api-docs" text="APIs" />
+    <SidebarItem icon={LibraryBooks} to="/docs" text="Docs" />
+    <SidebarItem icon={CreateComponentIcon} to="create" text="Create..." />
+    <SidebarDivider />
+    <SidebarItem icon={MapIcon} to="tech-radar" text="Tech Radar" />
+    {/* End global nav */}
+    <SidebarDivider />
+    <SidebarSpace />
+    <SidebarDivider />
+    <SidebarSettings />
+  </Sidebar>
+);

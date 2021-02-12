@@ -14,7 +14,16 @@
  * limitations under the License.
  */
 
-import { RouteRefConfig, RouteRef } from './types';
+import { RouteRef } from './types';
+import { IconComponent } from '../icons';
+
+export type RouteRefConfig<Params extends { [param in string]: string }> = {
+  params?: Array<keyof Params>;
+  /** @deprecated Route refs no longer decide their own path */
+  path?: string;
+  icon?: IconComponent;
+  title: string;
+};
 
 export class AbsoluteRouteRef<Params extends { [param in string]: string }> {
   constructor(private readonly config: RouteRefConfig<Params>) {}
@@ -25,31 +34,44 @@ export class AbsoluteRouteRef<Params extends { [param in string]: string }> {
 
   // TODO(Rugvip): Remove this, routes are looked up via the registry instead
   get path() {
-    return this.config.path;
+    return this.config.path ?? '';
   }
 
   get title() {
     return this.config.title;
   }
 
-  /**
-   * This function should not be used, create a separate RouteRef instead
-   * @deprecated
-   */
-  createSubRoute(): any {
-    throw new Error(
-      'This method should not be called, create a separate RouteRef instead',
-    );
-  }
-
   toString() {
-    return `routeRef{path=${this.path}}`;
+    return `routeRef{title=${this.title}}`;
   }
 }
 
 export function createRouteRef<
-  ParamKeys extends string,
-  Params extends { [param in string]: string } = { [name in ParamKeys]: string }
->(config: RouteRefConfig<Params>): RouteRef<Params> {
+  // Params is the type that we care about and the one to be embedded in the route ref.
+  // For example, given the params ['name', 'kind'], Params will be {name: string, kind: string}
+  Params extends { [param in ParamKey]: string },
+  // ParamKey is here to make sure the Params type properly has its keys narrowed down
+  // to only the elements of params. Defaulting to never makes sure we end up with
+  // Param = {} if the params array is empty.
+  ParamKey extends string = never
+>(config: {
+  params?: ParamKey[];
+  /** @deprecated Route refs no longer decide their own path */
+  path?: string;
+  icon?: IconComponent;
+  title: string;
+}): RouteRef<Params> {
   return new AbsoluteRouteRef<Params>(config);
+}
+
+export class ExternalRouteRef {
+  private constructor() {}
+
+  toString() {
+    return `externalRouteRef{}`;
+  }
+}
+
+export function createExternalRouteRef(): ExternalRouteRef {
+  return new ((ExternalRouteRef as unknown) as { new (): ExternalRouteRef })();
 }

@@ -3,11 +3,15 @@ kind: Component
 metadata:
   name: petstore
   description: Petstore
+  links:
+    - url: https://github.com/swagger-api/swagger-petstore
+      title: GitHub Repo
+      icon: github
 spec:
   type: service
   lifecycle: experimental
   owner: team-c
-  implementsApis:
+  providesApis:
     - petstore
     - streetlights
     - hello-world

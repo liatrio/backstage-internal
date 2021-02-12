@@ -20,24 +20,22 @@ import { GitLabIntegration } from './GitLabIntegration';
 describe('GitLabIntegration', () => {
   it('has a working factory', () => {
     const integrations = GitLabIntegration.factory({
-      config: ConfigReader.fromConfigs([
-        {
-          context: '',
-          data: {
-            integrations: {
-              gitlab: [
-                {
-                  host: 'h.com',
-                  token: 't',
-                },
-              ],
+      config: new ConfigReader({
+        integrations: {
+          gitlab: [
+            {
+              host: 'h.com',
+              token: 't',
+              apiBaseUrl: 'https://h.com/api/v4',
+              baseUrl: 'https://h.com',
             },
-          },
+          ],
         },
-      ]),
+      }),
     });
-    expect(integrations.length).toBe(2); // including default
-    expect(integrations[0].predicate(new URL('https://h.com/a'))).toBe(true);
+    expect(integrations.list().length).toBe(2); // including default
+    expect(integrations.list()[0].config.host).toBe('h.com');
+    expect(integrations.list()[1].config.host).toBe('gitlab.com');
   });
 
   it('returns the basics', () => {

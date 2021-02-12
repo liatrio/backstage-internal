@@ -17,12 +17,14 @@
 import * as results from './results';
 
 export { AnnotateLocationEntityProcessor } from './AnnotateLocationEntityProcessor';
+export { AwsOrganizationCloudAccountProcessor } from './AwsOrganizationCloudAccountProcessor';
 export { BuiltinKindsEntityProcessor } from './BuiltinKindsEntityProcessor';
 export { CodeOwnersProcessor } from './CodeOwnersProcessor';
 export { FileReaderProcessor } from './FileReaderProcessor';
+export { GithubDiscoveryProcessor } from './GithubDiscoveryProcessor';
 export { GithubOrgReaderProcessor } from './GithubOrgReaderProcessor';
 export { LdapOrgReaderProcessor } from './LdapOrgReaderProcessor';
-export { LocationRefProcessor } from './LocationEntityProcessor';
+export { LocationEntityProcessor } from './LocationEntityProcessor';
 export { MicrosoftGraphOrgReaderProcessor } from './MicrosoftGraphOrgReaderProcessor';
 export { PlaceholderProcessor } from './PlaceholderProcessor';
 export type { PlaceholderResolver } from './PlaceholderProcessor';

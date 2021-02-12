@@ -1,5 +1,95 @@
 # @backstage/plugin-cost-insights
 
+## 0.8.1
+
+### Patch Changes
+
+- b33fa4cf4: fixes a bug in default dismiss form where other text input persists between reason selections
+- d36660721: Fix snooze quarter option
+- 02d6803e8: Migrated to new composability API, exporting the plugin instance as `costInsightsPlugin`, the root `'/cost-insights'` page as `CostInsightsPage`, the `'/cost-insights/investigating-growth'` page as `CostInsightsProjectGrowthInstructionsPage`, and the `'/cost-insights/labeling-jobs'` page as `CostInsightsLabelDataflowInstructionsPage`.
+- Updated dependencies [b51ee6ece]
+  - @backstage/core@0.6.1
+
+## 0.8.0
+
+### Minor Changes
+
+- 19172f5a9: add alert hooks
+
+### Patch Changes
+
+- 4c6a6dddd: Fixed date calculations incorrectly converting to UTC in some cases. This should be a transparent change.
+- Updated dependencies [12ece98cd]
+- Updated dependencies [d82246867]
+- Updated dependencies [c810082ae]
+- Updated dependencies [5fa3bdb55]
+- Updated dependencies [21e624ba9]
+- Updated dependencies [da9f53c60]
+- Updated dependencies [32c95605f]
+- Updated dependencies [54c7d02f7]
+  - @backstage/core@0.6.0
+  - @backstage/theme@0.2.3
+
+## 0.7.0
+
+### Minor Changes
+
+- 19172f5a9: add alert hooks
+
+## 0.6.0
+
+### Minor Changes
+
+- fac91bcc5: Add support for additional breakdowns of daily cost data.
+  This changes the type of Cost.groupedCosts returned by CostInsightsApi.getGroupDailyCost.
+
+### Patch Changes
+
+- 8b7ef9f8b: Allow expand functionality to top panel product chart tooltip.
+
+## 0.5.7
+
+### Patch Changes
+
+- 8c2437c15: bug(cost-insights): Remove entity count when none present
+- Updated dependencies [efd6ef753]
+- Updated dependencies [a187b8ad0]
+  - @backstage/core@0.5.0
+
+## 0.5.6
+
+### Patch Changes
+
+- 9e9504ce4: Minor wording change in UI
+
+## 0.5.5
+
+### Patch Changes
+
+- ab0892358: Remove test dependencies from production package list
+
+## 0.5.4
+
+### Patch Changes
+
+- 3fca9adb9: Fix links in sample instructions
+- Updated dependencies [a08c32ced]
+  - @backstage/core@0.4.3
+
+## 0.5.3
+
+### Patch Changes
+
+- c02defd57: Make alert url field optional
+
+## 0.5.2
+
+### Patch Changes
+
+- 48c305e69: pin all projects selection to the top of menu list
+- Updated dependencies [8ef71ed32]
+  - @backstage/core@0.4.1
+
 ## 0.5.1
 
 ### Patch Changes
