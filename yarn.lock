@@ -1838,7 +1838,7 @@
     "@testing-library/react-hooks" "^3.4.2"
     "@types/dagre" "^0.7.44"
     "@types/prop-types" "^15.7.3"
-    "@types/react" "^16.9"
+    "@types/react" "^17.0"
     "@types/react-sparklines" "^1.7.0"
     classnames "^2.2.6"
     clsx "^1.1.0"
@@ -1877,7 +1877,7 @@
     "@material-ui/core" "^4.11.0"
     "@material-ui/icons" "^4.9.1"
     "@material-ui/lab" "4.0.0-alpha.45"
-    "@types/react" "^16.9"
+    "@types/react" "^17.0"
     classnames "^2.2.6"
     git-url-parse "^11.4.4"
     react "^16.13.1"
@@ -1900,7 +1900,7 @@
     "@material-ui/core" "^4.11.0"
     "@material-ui/icons" "^4.9.1"
     "@material-ui/lab" "4.0.0-alpha.45"
-    "@types/react" "^16.9"
+    "@types/react" "^17.0"
     classnames "^2.2.6"
     git-url-parse "^11.4.4"
     react "^16.13.1"
@@ -6663,13 +6663,13 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^16.9":
-  version "16.9.37"
-  resolved "https://registry.npmjs.org/@types/react/-/react-16.9.37.tgz#8fb93e7dbd5b1d3796f69aa979a7fe0439bc7bea"
-  integrity sha512-ZqnAXallQiZ08LTSqMfWMNvAfJEzRLOxdlbbbCIJlYGjU98BEU6bE2uBpKPGeWn+v3hIgCraHKtqUcKZBzMP/Q==
+"@types/react@*", "@types/react@^17.0":
+  version "17.0.2"
+  resolved "https://registry.npmjs.org/@types/react/-/react-17.0.2.tgz#3de24c4efef902dd9795a49c75f760cbe4f7a5a8"
+  integrity sha512-Xt40xQsrkdvjn1EyWe1Bc0dJLcil/9x2vAuW7ya+PuQip4UYUaXyhzWmAbwRsdMgwOFHpfp7/FFZebDU6Y8VHA==
   dependencies:
     "@types/prop-types" "*"
-    csstype "^2.2.0"
+    csstype "^3.0.2"
 
 "@types/react@16.4.6":
   version "16.4.6"
@@ -10778,6 +10778,11 @@ csstype@^2.2.0, csstype@^2.5.2, csstype@^2.5.5, csstype@^2.5.7, csstype@^2.6.5, 
   version "2.6.9"
   resolved "https://registry.npmjs.org/csstype/-/csstype-2.6.9.tgz#05141d0cd557a56b8891394c1911c40c8a98d098"
   integrity sha512-xz39Sb4+OaTsULgUERcCk+TJj8ylkL4aSVDQiX/ksxbELSqwkgt4d4RD7fovIdgJGSuNYqwZEiVjYY5l0ask+Q==
+
+csstype@^3.0.2:
+  version "3.0.7"
+  resolved "https://registry.npmjs.org/csstype/-/csstype-3.0.7.tgz#2a5fb75e1015e84dd15692f71e89a1450290950b"
+  integrity sha512-KxnUB0ZMlnUWCsx2Z8MUsr6qV6ja1w9ArPErJaJaF8a5SOWoHLIszeCTKGRGRgtLgYrs1E8CHkNSP1VZTTPc9g==
 
 csv-generate@^3.2.4:
   version "3.2.4"
