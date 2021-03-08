@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  frontend:
+    build: .
+    volumes: 
+      - ./:/backstage-frontend/
+    ports:
+      - "3000:3000"
+    restart: always
+    command: "yarn start"
+  backend:
+    build: ./docker/backend/
+    volumes:
+      - ./:/backstage-backend/
+    restart: always
+    expose:
+      - "7000"
+    command: "yarn start"
