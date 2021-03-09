@@ -1,7 +1,9 @@
 version: '3.8'
 services:
   frontend:
-    build: .
+    build:
+      context: .
+      dockerfile: frontend.Dockerfile
     volumes: 
       - ./:/backstage-frontend/
     ports:
@@ -9,7 +11,9 @@ services:
     restart: always
     command: "yarn start"
   backend:
-    build: ./docker/backend/
+    build:
+      context: .
+      dockerfile: backend.Dockerfile
     volumes:
       - ./:/backstage-backend/
     restart: always

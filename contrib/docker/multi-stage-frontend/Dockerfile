@@ -5,7 +5,7 @@ COPY . /app
 WORKDIR /app
 
 RUN yarn install
-RUN yarn workspace example-app build
+RUN yarn build
 
 # Contruct backstage-frontend image
 FROM nginx:mainline
